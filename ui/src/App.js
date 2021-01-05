@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "antd/dist/antd.css";
+import { Layout, Row, Col, Card } from 'antd';
+import { FormCard } from './app/components/card/index.tsx';
+
+const { Header, Footer, Content } = Layout;
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+  <Row justify="center">
+    <Col span={16}>
+      <Layout>
+      <Header/>
+      <Content>   
+            <FormCard/>
+      </Content>
+      <Footer />
+    </Layout>
+  </Col>
+</Row>
+  </>
   );
 }
 
