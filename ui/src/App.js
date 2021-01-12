@@ -1,26 +1,20 @@
-import "antd/dist/antd.css";
-import { Layout, Row, Col, Card } from 'antd';
-import { FormCard } from './app/components/card/index.tsx';
+import "antd/dist/antd.css"
+import "./index.css"
+import { Row, Col } from 'antd'
+import { CardWrapper } from './app/components/card/index.tsx'
 
-const { Header, Footer, Content } = Layout;
 
-
-function App() {
+const App = () =>  {
   return (
     <>
-  <Row justify="center">
-    <Col span={16}>
-      <Layout>
-      <Header/>
-      <Content>   
-            <FormCard/>
-      </Content>
-      <Footer />
-    </Layout>
-  </Col>
-</Row>
-  </>
+    <Row className={"container"}>
+      <Col span={24}>
+      <CardWrapper/> 
+      </Col>
+    </Row>
+    </>
+    
   );
 }
 
-export default App;
+export default App
