@@ -18,3 +18,20 @@ code {
   justify-content: center;
   height: 100vh;
 }
+
+.card {
+  width: 33%;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 32px;
+  color: black;
+  text-align: center;
+}
+
+.link {
+  text-align: center;
+}

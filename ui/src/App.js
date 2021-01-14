@@ -1,16 +1,19 @@
 import "antd/dist/antd.css"
 import "./index.css"
 import { Row, Col } from 'antd'
-import { CardWrapper } from './app/components/card/index.tsx'
+import { CardContainer } from './app/components/card'
+import { GiftForm } from './app/components/form'
 
 
 const App = () =>  {
   return (
     <>
     <Row className={"container"}>
+      <CardContainer>
       <Col span={24}>
-      <CardWrapper/> 
+        <GiftForm/>
       </Col>
+      </CardContainer>
     </Row>
     </>
     
