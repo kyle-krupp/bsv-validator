@@ -18,7 +18,7 @@ export const GiftForm = () => {
     subTitle="Share your secret URL"
     extra={[
     <>  
-    <a href="https://app.handcash.io/#/authorizeApp?appId=5fff949f4033300c3d87aed1">https://app.handcash.io/#/authorizeApp?appId=5fff949f4033300c3d87aed1</a>
+    <a href="https://app.handcash.io/#/authorizeApp?appId=5fff949f4033300c3d87aed1"></a>
     <div>&nbsp;</div>
    <Button type="primary" key="console" icon={<CopyOutlined />}>
         Copy to clipboard
