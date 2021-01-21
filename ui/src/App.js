@@ -11,7 +11,7 @@ const App = () =>  {
 
   const [isLoggedIn, setLoggedIn] = useState(false)
 
-
+  const handleLogin = () => setLoggedIn(true)
 
   return (
     <>
