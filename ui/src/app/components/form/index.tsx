@@ -20,14 +20,14 @@ export const GiftForm = () => {
     <>  
     <a href="https://app.handcash.io/#/authorizeApp?appId=5fff949f4033300c3d87aed1">https://app.handcash.io/#/authorizeApp?appId=5fff949f4033300c3d87aed1</a>
     <div>&nbsp;</div>
-   <Button type="primary" key="console" icon={<CopyOutlined />}>
+   <Button className={"button"} type="primary" key="console" icon={<CopyOutlined />}>
         Copy to clipboard
       </Button>
       </>,
     ]}
   />: 
   <>
-  <Image src={'https://bitcoin-sv-gifter.s3.amazonaws.com/bitcoinSVlogo.png'} width={100}></Image>
+  <Image src={'https://bitcoin-sv-gifter.s3.amazonaws.com/mitto-logo-resizedv1.png'} width={100}></Image>
   <h1>Send Bitcoin SV via a URL</h1>
   <Form
   layout={'vertical'}
@@ -44,7 +44,7 @@ export const GiftForm = () => {
     <Input placeholder="Brief description (optional)" />
   </Form.Item>
   <Form.Item>
-    <Button type="primary" htmlType="submit">Generate Payment URL</Button>
+    <Button className={"button"}type="primary" htmlType="submit">Generate Payment URL</Button>
   </Form.Item>
 </Form>
 </>

@@ -3,18 +3,25 @@ import "./index.css"
 import { Row, Col } from 'antd'
 import { CardContainer } from './app/components/card'
 import { GiftForm } from './app/components/form'
+import { LoginCard } from "./app/components/login"
+import { useState } from 'react'
 
 
 const App = () =>  {
+
+  const [isLoggedIn, setLoggedIn] = useState(false)
+
+
+
   return (
     <>
-    <Row className={"container"}>
-      <CardContainer>
+        <Row className={"container"}>
+        <CardContainer>
       <Col span={24}>
-        <GiftForm/>
+    {isLoggedIn ? <GiftForm/> : <LoginCard/>}
       </Col>
       </CardContainer>
-    </Row>
+      </Row>
     </>
     
   );
