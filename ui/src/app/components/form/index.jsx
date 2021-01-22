@@ -1,11 +1,33 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Form, Input, Button, Result, Image } from 'antd';
 import { CopyOutlined } from '@ant-design/icons'
+import { CardContainer } from '../card';
 
 export const GiftForm = () => {
   const [form] = Form.useForm()
   const [isSubmitted, setSubmitResult] = useState(false)
 
+  const initialState = {
+    name: "",
+    currency: "",
+    profilePictureUrl: ""
+  }
+
+  const [userInfo, setUserInfo] = useState(initialState)
+
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const authToken = params.get('authToken').split("&").toString()
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ "handCashAuthToken": authToken })
+    };
+    fetch('http://mittocash-prod.us-east-1.elasticbeanstalk.com/login', requestOptions)
+        .then(response => response.json())
+        .then(data => setUserInfo(data))
+}, []);
 
   const onFinish = () => {
     setSubmitResult(true)
@@ -18,7 +40,7 @@ export const GiftForm = () => {
     subTitle="Share your secret URL"
     extra={[
     <>  
-    <a href="https://app.handcash.io/#/authorizeApp?appId=5fff949f4033300c3d87aed1">https://app.handcash.io/#/authorizeApp?appId=5fff949f4033300c3d87aed1</a>
+    <a href="#">example link</a>
     <div>&nbsp;</div>
    <Button className={"button"} type="primary" key="console" icon={<CopyOutlined />}>
         Copy to clipboard
@@ -27,7 +49,14 @@ export const GiftForm = () => {
     ]}
   />: 
   <>
-  <Image src={'https://bitcoin-sv-gifter.s3.amazonaws.com/mitto-logo-resizedv1.png'} width={100}></Image>
+  <CardContainer>
+  <div>{userInfo.name}</div>
+<div>{userInfo.currency}</div>
+<Image src={userInfo.profilePictureUrl} width={100} preview={false}></Image>
+  </CardContainer>
+
+
+  <Image src={'https://bitcoin-sv-gifter.s3.amazonaws.com/mitto-logo-resizedv1.png'} width={100} preview={false}></Image>
   <h1>Send Bitcoin SV via a URL</h1>
   <Form
   layout={'vertical'}
@@ -50,8 +79,7 @@ export const GiftForm = () => {
 </>
 
 }
-
-  </>
+</>
       
     
   );

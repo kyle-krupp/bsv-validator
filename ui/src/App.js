@@ -2,33 +2,32 @@ import "antd/dist/antd.css"
 import "./index.css"
 import { Row, Col, Image } from 'antd'
 import { CardContainer } from './app/components/card'
-import {useAsync} from "./app/hooks/auth/asyncAuth"
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { GiftForm } from "./app/components/form/index"
 
 const App = () =>  {
 
-  const connectWithHandCash = () => {
-    const fetcher = window.fetch("https://app.handcash.io/#/authorizeApp?appId=5fff949f4033300c3d87aed1")
-    return fetcher.json()
-  }
-
-  const { execute, status, value, error } = useAsync(connectWithHandCash, false)
-
+  const testConnect = () => window.location.href = "https://app.handcash.io/#/authorizeApp?appId=5fff949f4033300c3d87aed1"
+  
   return (
     <>
-    <Row className={"container"}>
+    <Router>
+      <Switch>
+        <Route path="/login">
+        <Row className={"container"}>
         <CardContainer>
         <Col span={24}>
-
-      <Image src={'https://bitcoin-sv-gifter.s3.amazonaws.com/mitto-logo-resizedv1.png'} className={'logo-image'} width={100}></Image>
-
-        <div onClick={execute} id="connectButton" app-id="123-456">Connect with HandCash</div>
-        {status === 'success' && <div>{value}</div>}
-
-        {status === 'error' && <div>{error}</div>}
-      </Col>
-      </CardContainer>
-      </Row>
+        <Image src={'https://bitcoin-sv-gifter.s3.amazonaws.com/mitto-logo-resizedv1.png'} className={'logo-image'} width={100}></Image>
+         <div onClick={testConnect} id="connectButton" app-id="123-456">Connect with HandCash</div>
+        </Col>
+        </CardContainer>
+        </Row>
+        </Route>
+        <Route path="/send">
+        <GiftForm/>
+        </Route>
+      </Switch>
+    </Router>
     </>
     
   );
