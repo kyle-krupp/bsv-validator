@@ -10,7 +10,6 @@ const App = () =>  {
   const testConnect = () => window.location.href = "https://app.handcash.io/#/authorizeApp?appId=5fff949f4033300c3d87aed1"
   
   return (
-    <>
     <Router>
       <Switch>
         <Route path="/login">
@@ -24,11 +23,16 @@ const App = () =>  {
         </Row>
         </Route>
         <Route path="/send">
+        <Row className={"container"}>
+        <CardContainer>
+        <Col span={24}>
         <GiftForm/>
+        </Col>
+        </CardContainer>
+        </Row>
         </Route>
       </Switch>
     </Router>
-    </>
     
   );
 
