@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Form, Input, Button, Result, Image, Tag, Divider, Avatar } from 'antd';
+import { Form, Input, Button, Result, Image, Tag, Divider } from 'antd';
 import { CopyOutlined } from '@ant-design/icons'
 import { CardContainer } from '../card';
 
@@ -50,7 +50,7 @@ export const GiftForm = () => {
   />: 
   <>
 <CardContainer>
-<Avatar src={userInfo.profilePictureUrl} size={{ xs: 100, sm: 100, md: 100, lg: 100, xl: 100, xxl: 100 }}></Avatar>
+{/* <Avatar src={userInfo.profilePictureUrl} size={{ xs: 100, sm: 100, md: 100, lg: 100, xl: 100, xxl: 100 }}></Avatar> */}
 <Divider/>
 <Tag color="default">{userInfo.name}</Tag>
 <Divider/>
