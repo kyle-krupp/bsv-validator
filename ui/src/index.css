@@ -4,6 +4,7 @@ body {
   font-family: "Montserrat Alternates", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #1345ce;
 }
 
 code {
@@ -21,7 +22,7 @@ code {
 .card {
   width: calc(100 / 3);
   text-align: center;
-  background-color: #1345ce;
+  background-color: white;
 }
 
 .button {
@@ -94,4 +95,12 @@ h1 {
 
 .logo-image {
   margin: 10px;
+}
+
+#user-info-card {
+  background-color: white;
+}
+
+.divider {
+  background-color: #1345ce;
 }

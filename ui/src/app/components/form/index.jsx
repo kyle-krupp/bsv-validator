@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { Form, Input, Button, Result, Image, Tag, Divider } from 'antd';
-import { CopyOutlined } from '@ant-design/icons'
+import { Form, Input, Button, Result, Image, Tag, Divider, Avatar } from 'antd';
+import { CopyOutlined, DollarCircleFilled, UserOutlined } from '@ant-design/icons'
 import { CardContainer } from '../card';
 
 export const GiftForm = () => {
@@ -49,15 +49,15 @@ export const GiftForm = () => {
     ]}
   />: 
   <>
-<CardContainer>
-{/* <Avatar src={userInfo.profilePictureUrl} size={{ xs: 100, sm: 100, md: 100, lg: 100, xl: 100, xxl: 100 }}></Avatar> */}
-<Divider/>
-<Tag color="default">{userInfo.name}</Tag>
-<Divider/>
-<Tag color="success">{userInfo.currency}</Tag>
+<Image src={'https://bitcoin-sv-gifter.s3.amazonaws.com/mitto-logo-dark.png'} width={100} preview={false}></Image>
+<CardContainer id={"user-info-card"}>
+<Avatar src={userInfo.profilePictureUrl} size={{ xs: 100, sm: 100, md: 100, lg: 100, xl: 100, xxl: 100 }}></Avatar>
+<Divider className={"divider"}/>
+<Tag icon={<UserOutlined />} color="default">{userInfo.name}</Tag>
+<Divider className={"divider"}/>
+<Tag icon={<DollarCircleFilled />} color="success">{userInfo.currency}</Tag>
 </CardContainer>
 
-  <Image src={'https://bitcoin-sv-gifter.s3.amazonaws.com/mitto-logo-resizedv1.png'} width={100} preview={false}></Image>
   <h1>Send Bitcoin SV via a URL</h1>
   <Form
   layout={'vertical'}
