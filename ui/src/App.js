@@ -15,7 +15,7 @@ const App = () =>  {
         <Route path="/login">
         <Row className={"container"}>
         <CardContainer>
-        <Col span={24}>
+        <Col span={36}>
         <Image src={'https://bitcoin-sv-gifter.s3.amazonaws.com/mitto-logo-resizedv1.png'} className={'logo-image'} width={100}></Image>
          <div onClick={testConnect} id="connectButton" app-id="123-456">Connect with HandCash</div>
         </Col>
@@ -25,7 +25,7 @@ const App = () =>  {
         <Route path="/send">
         <Row className={"container"}>
         <CardContainer>
-        <Col span={24}>
+        <Col span={36}>
         <GiftForm/>
         </Col>
         </CardContainer>

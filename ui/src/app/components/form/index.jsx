@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Form, Input, Button, Result, Image } from 'antd';
+import { Form, Input, Button, Result, Image, Tag, Divider, Avatar } from 'antd';
 import { CopyOutlined } from '@ant-design/icons'
 import { CardContainer } from '../card';
 
@@ -40,7 +40,7 @@ export const GiftForm = () => {
     subTitle="Share your secret URL"
     extra={[
     <>  
-    <a href="#">example link</a>
+    <div>this is just a test</div>
     <div>&nbsp;</div>
    <Button className={"button"} type="primary" key="console" icon={<CopyOutlined />}>
         Copy to clipboard
@@ -49,12 +49,13 @@ export const GiftForm = () => {
     ]}
   />: 
   <>
-  <CardContainer>
-  <div>{userInfo.name}</div>
-<div>{userInfo.currency}</div>
-<Image src={userInfo.profilePictureUrl} width={100} preview={false}></Image>
-  </CardContainer>
-
+<CardContainer>
+<Avatar src={userInfo.profilePictureUrl} size={{ xs: 100, sm: 100, md: 100, lg: 100, xl: 100, xxl: 100 }}></Avatar>
+<Divider/>
+<Tag color="default">{userInfo.name}</Tag>
+<Divider/>
+<Tag color="success">{userInfo.currency}</Tag>
+</CardContainer>
 
   <Image src={'https://bitcoin-sv-gifter.s3.amazonaws.com/mitto-logo-resizedv1.png'} width={100} preview={false}></Image>
   <h1>Send Bitcoin SV via a URL</h1>
@@ -80,7 +81,7 @@ export const GiftForm = () => {
 
 }
 </>
-      
+
     
   );
 }
