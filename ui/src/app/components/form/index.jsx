@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { Form, Input, Button, Result, Image, Tag, Divider, Avatar } from 'antd';
-import { CopyOutlined, DollarCircleFilled, UserOutlined } from '@ant-design/icons'
+import { Form, Input, Button, Result, Image, Tag, Avatar, InputNumber, Divider } from 'antd';
+import { CopyOutlined, DollarCircleFilled, GiftOutlined, SendOutlined } from '@ant-design/icons'
 import { CardContainer } from '../card';
 
 export const GiftForm = () => {
@@ -49,32 +49,39 @@ export const GiftForm = () => {
     ]}
   />: 
   <>
-<Image src={'https://bitcoin-sv-gifter.s3.amazonaws.com/mitto-logo-dark.png'} width={100} preview={false}></Image>
 <CardContainer id={"user-info-card"}>
-<Avatar src={userInfo.profilePictureUrl} size={{ xs: 100, sm: 100, md: 100, lg: 100, xl: 100, xxl: 100 }}></Avatar>
-<Divider className={"divider"}/>
-<Tag icon={<UserOutlined />} color="default">{userInfo.name}</Tag>
-<Divider className={"divider"}/>
-<Tag icon={<DollarCircleFilled />} color="success">{userInfo.currency}</Tag>
+<Image src={'https://bitcoin-sv-gifter.s3.amazonaws.com/mitto-logo-dark.png'} width={50} preview={false}></Image>
+<Divider/>
+<Avatar src={userInfo.profilePictureUrl} size={{ xs: 80, sm: 80, md: 80, lg: 80, xl: 80, xxl: 80 }}></Avatar>
+<h3>Welcome, {userInfo.name}!</h3>
+
 </CardContainer>
 
-  <h1>Send Bitcoin SV via a URL</h1>
+  <GiftOutlined style={{ fontSize: '20px', color: '#1345ce' }}/>
+
+  <h3>Send a gift:</h3>
   <Form
   layout={'vertical'}
   form={form}
   onFinish={onFinish}
 >
-  <Form.Item name={'E-mail'} label={'E-mail'}>
-    <Input placeholder="Your email (required)" />
+  <Form.Item name={"Recipient's E-mail"} label={"Recipient's E-mail"}>
+   
+    <Input placeholder={"john.doe@example.com"} />
   </Form.Item>
-  <Form.Item name={'Amount'} label={'Amount'}>
-    <Input placeholder="BSV Amount (required)" />
+  <Form.Item name={'Amount'} label={'Amount in'}>
+  <Tag icon={<DollarCircleFilled />} color="success">{userInfo.currency}</Tag>
+  <InputNumber
+      defaultValue={1000}
+      formatter={value => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+      parser={value => value.replace(/\$\s?|(,*)/g, '')}
+    />
   </Form.Item>
-  <Form.Item name={'Description'}label={'Description'}>
-    <Input placeholder="Brief description (optional)" />
+  <Form.Item name={'Note'}label={'Description'}>
+    <Input placeholder="Brief message (optional)" />
   </Form.Item>
   <Form.Item>
-    <Button className={"button"}type="primary" htmlType="submit">Generate Payment URL</Button>
+    <Button className={"button"}type="primary" htmlType="submit" icon={<SendOutlined />}>Send</Button>
   </Form.Item>
 </Form>
 </>

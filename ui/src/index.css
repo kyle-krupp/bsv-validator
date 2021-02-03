@@ -20,9 +20,7 @@ code {
 }
 
 .card {
-  width: calc(100 / 3);
   text-align: center;
-  background-color: white;
 }
 
 .button {
@@ -98,9 +96,5 @@ h1 {
 }
 
 #user-info-card {
-  background-color: white;
-}
-
-.divider {
-  background-color: #1345ce;
+  background-color: #1345ce !important;
 }
