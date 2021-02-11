@@ -17,7 +17,7 @@ export const GiftForm = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ "handCashAuthToken": authToken })
     };
-    const response = await fetch('http://mittocash-prod.us-east-1.elasticbeanstalk.com/login', requestOptions)
+    const response = await fetch('https://mittocash-prod.us-east-1.elasticbeanstalk.com/login', requestOptions)
     setUserInfo(await response.json())
     console.log("yo im hit")
   }
