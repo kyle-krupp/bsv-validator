@@ -2,16 +2,12 @@ import React, {useState, useEffect} from 'react';
 import { Form, Input, Button, Result, Image, Tag, Avatar, InputNumber, Divider } from 'antd';
 import { CopyOutlined, DollarCircleFilled, GiftOutlined, SendOutlined } from '@ant-design/icons'
 import { CardContainer } from '../card';
-import { usePromiseTracker, trackPromise } from "react-promise-tracker";
-
-const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 export const GiftForm = () => {
   const [form] = Form.useForm()
   const [isSubmitted, setSubmitResult] = useState(false)
   const [userInfo, setUserInfo] = useState({})
   const [loading, setLoading] = useState(false);
-  const { promiseInProgress } = usePromiseTracker({ delay: 500 });
 
   const logUser = async () => {
     const params = new URLSearchParams(window.location.search);
