@@ -2,21 +2,18 @@ import React, {useState, useEffect} from 'react';
 import { Form, Input, Button, Result, Image, Tag, Avatar, InputNumber, Divider } from 'antd';
 import { CopyOutlined, DollarCircleFilled, GiftOutlined, SendOutlined } from '@ant-design/icons'
 import { CardContainer } from '../card';
+import { usePromiseTracker, trackPromise } from "react-promise-tracker";
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 export const GiftForm = () => {
   const [form] = Form.useForm()
   const [isSubmitted, setSubmitResult] = useState(false)
+  const [userInfo, setUserInfo] = useState({})
+  const [loading, setLoading] = useState(false);
+  const { promiseInProgress } = usePromiseTracker({ delay: 500 });
 
-  const initialState = {
-    name: "",
-    currency: "",
-    profilePictureUrl: ""
-  }
-
-  const [userInfo, setUserInfo] = useState(initialState)
-
-
-  useEffect(() => {
+  const logUser = async () => {
     const params = new URLSearchParams(window.location.search);
     const authToken = params.get('authToken').split("&").toString()
     const requestOptions = {
@@ -24,9 +21,16 @@ export const GiftForm = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ "handCashAuthToken": authToken })
     };
-    fetch('http://mittocash-prod.us-east-1.elasticbeanstalk.com/login', requestOptions)
-        .then(response => response.json())
-        .then(data => setUserInfo(data))
+    const response = await fetch('http://mittocash-prod.us-east-1.elasticbeanstalk.com/login', requestOptions)
+    setUserInfo(await response.json())
+    console.log("yo im hit")
+  }
+
+
+  useEffect(() => {
+    setLoading(true)
+    logUser()
+    setLoading(false)
 }, []);
 
   const onFinish = () => {
@@ -47,7 +51,8 @@ export const GiftForm = () => {
       </Button>
       </>,
     ]}
-  />: 
+  />:
+  loading ? "loading.." :
   <>
 <CardContainer id={"user-info-card"}>
 <Image src={'https://bitcoin-sv-gifter.s3.amazonaws.com/mitto-logo-dark.png'} width={50} preview={false}></Image>
