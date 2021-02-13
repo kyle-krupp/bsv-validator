@@ -2,25 +2,42 @@ import React, {useState, useEffect} from 'react';
 import { Form, Input, Button, Result, Image, Tag, Avatar, InputNumber, Divider } from 'antd';
 import { CopyOutlined, DollarCircleFilled, GiftOutlined, SendOutlined } from '@ant-design/icons'
 import { CardContainer } from '../card';
+import { Link } from 'react-router-dom'
 
 export const GiftForm = () => {
   const [form] = Form.useForm()
   const [isSubmitted, setSubmitResult] = useState(false)
   const [userInfo, setUserInfo] = useState({})
   const [loading, setLoading] = useState(false);
+  const [redemptionToken, setRedemptionToken] = useState("")
+  const params = new URLSearchParams(window.location.search);
+  const authToken = params.get('authToken').split("&").toString()
 
   const logUser = async () => {
-    const params = new URLSearchParams(window.location.search);
-    const authToken = params.get('authToken').split("&").toString()
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ "handCashAuthToken": authToken })
-    };
+    }
     const response = await fetch('https://api.mitto.cash/login', requestOptions)
     setUserInfo(await response.json())
   }
 
+  const sendGift = async () => {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ "giverHandcashAuthToken": authToken,
+      "amount" : 0.01,
+      "currencyCode": "USD",
+      "receiverEmail": "brandon.bryant002@gmail.com",
+      "note": "just a test"
+    })
+  }
+  const response = await fetch('https://api.mitto.cash/gift', requestOptions)
+  const giftData = await response.json()
+  setRedemptionToken(giftData.redemptionToken)
+  }
 
   useEffect(() => {
     setLoading(true)
@@ -29,7 +46,9 @@ export const GiftForm = () => {
 }, []);
 
   const onFinish = () => {
+    sendGift()
     setSubmitResult(true)
+
   };
   return (
     <>
@@ -39,7 +58,10 @@ export const GiftForm = () => {
     subTitle="Share your secret URL"
     extra={[
     <>  
-    <div>this is just a test</div>
+    <Link to={{
+      pathname: '/gift',
+      search: `?redemptionToken=${redemptionToken}`
+    }}>Redemption link</Link>
     <div>&nbsp;</div>
    <Button className={"button"} type="primary" key="console" icon={<CopyOutlined />}>
         Copy to clipboard
