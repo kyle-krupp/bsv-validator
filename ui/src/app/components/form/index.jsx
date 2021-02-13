@@ -19,7 +19,6 @@ export const GiftForm = () => {
     };
     const response = await fetch('https://api.mitto.cash/login', requestOptions)
     setUserInfo(await response.json())
-    console.log("yo im hit")
   }
 
 
