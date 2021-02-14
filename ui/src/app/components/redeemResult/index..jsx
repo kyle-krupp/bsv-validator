@@ -4,8 +4,6 @@ export const RedeemResult = () => {
   const [status, setStatus] = useState(null)
   const authToken = localStorage.getItem('authToken')
   const redemptionToken = localStorage.getItem('redemptionToken')
-  console.log(authToken)
-  console.log(redemptionToken)
 
   const redeemGift = async () => {
     const requestOptions = {
