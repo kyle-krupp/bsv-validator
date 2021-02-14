@@ -2,9 +2,10 @@ import React, {useState, useEffect} from 'react';
 import { Form, Input, Button, Result, Image, Avatar, Divider } from 'antd';
 import { CopyOutlined, GiftOutlined, SendOutlined } from '@ant-design/icons'
 import { CardContainer } from '../card';
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 export const GiftForm = () => {
+  let history = useHistory()
   const baseUrl = window.location.href.includes("localhost") ? "localhost:3000" : "https://angry-perlman-edcb4a.netlify.app/"
   const [form] = Form.useForm()
   const [isSubmitted, setSubmitResult] = useState(false)
@@ -14,7 +15,13 @@ export const GiftForm = () => {
   const [redemptionUrl, setRedemptionUrl] = useState('')
   const params = new URLSearchParams(window.location.search);
   const authToken = params.get('authToken').split("&").toString()
+  localStorage.setItem('authToken', authToken)
 
+  const isRecipent = localStorage.getItem('redemptionToken') ? true : false
+  
+  const checkRecipientRedirect = () => isRecipent ? history.push(`redeem/gift?authToken=${authToken}`) : null
+  
+  checkRecipientRedirect()
 
   const sendGift = async (email, amount, note) => {
     const requestOptions = {
@@ -30,7 +37,7 @@ export const GiftForm = () => {
   const response = await fetch('https://api.mitto.cash/gift', requestOptions)
   const giftData = await response.json()
   setRedemptionToken(giftData.redemptionToken)
-  setRedemptionUrl(`${baseUrl}/gift?redemptionToken=${giftData.redemptionToken}`)
+  setRedemptionUrl(`${baseUrl}/redeem?redemptionToken=${giftData.redemptionToken}`)
   sessionStorage.setItem("redemptionToken", giftData.redemptionToken)
   }
 
@@ -64,7 +71,7 @@ export const GiftForm = () => {
     extra={[
     <>  
     <Link to={{
-      pathname: '/gift',
+      pathname: '/redeem',
       search: `?redemptionToken=${redemptionToken}`
     }}>{redemptionUrl}</Link>
     <div>&nbsp;</div>
