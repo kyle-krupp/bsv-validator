@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 export const RedeemPage = () => {
   const params = new URLSearchParams(window.location.search);
   const redemptionToken = params.get('redemptionToken')
