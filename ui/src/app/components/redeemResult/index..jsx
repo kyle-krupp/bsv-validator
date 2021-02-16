@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 export const RedeemResult = () => {
-  const [status, setStatus] = useState(null)
+  const [status, setStatus] = useState(200)
   const authToken = localStorage.getItem('authToken')
   const redemptionToken = localStorage.getItem('redemptionToken')
 
@@ -20,7 +20,8 @@ export const RedeemResult = () => {
 
   useEffect(() => {
    redeemGift()
-   localStorage.clear()
-  })
+   return () => localStorage.clear()
+     // eslint-disable-next-line
+  }, [])
   return <div style={{color: 'white'}}>{status === 200 ? "Redemption success! Check your HandCash wallet for $$$": "oops, something went wrong.."}</div>
 }
