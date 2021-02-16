@@ -6,7 +6,7 @@ import { Link, useHistory } from 'react-router-dom'
 
 export const GiftForm = () => {
   let history = useHistory()
-  const baseUrl = window.location.href.includes("localhost") ? "localhost:3000" : "https://angry-perlman-edcb4a.netlify.app/"
+  const baseUrl = window.location.href.includes("localhost") ? "localhost:3000" : "https://angry-perlman-edcb4a.netlify.app"
   const [form] = Form.useForm()
   const [isSubmitted, setSubmitResult] = useState(false)
   const [userInfo, setUserInfo] = useState({})
