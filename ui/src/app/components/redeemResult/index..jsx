@@ -20,7 +20,7 @@ export const RedeemResult = () => {
 
   useEffect(() => {
    redeemGift()
-   return () => localStorage.clear()
+   localStorage.clear()
      // eslint-disable-next-line
   }, [])
   return <div style={{color: 'white'}}>{status === 200 ? "Redemption success! Check your HandCash wallet for $$$": "oops, something went wrong.."}</div>
