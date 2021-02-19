@@ -6,12 +6,14 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { GiftForm } from "./app/components/form/index"
 import { RedeemPage } from "./app/components/redeem"
 import { RedeemResult } from "./app/components/redeemResult/index."
+import { Header } from "./app/components/layout/header"
 
 const App = () =>  {
   const connectToHandcash = () => window.location.href = "https://app.handcash.io/#/authorizeApp?appId=5fff949f4033300c3d87aed1"
   
   return (
     <Router>
+      <Header/>
       <Switch>
         <Route path="/login">
         <Row className={"container"}>
