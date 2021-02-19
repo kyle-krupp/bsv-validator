@@ -5,7 +5,6 @@ body {
   font-family: "Montserrat Alternates", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #1345ce;
 }
 
 code {
@@ -99,5 +98,12 @@ h1 {
 }
 
 #user-info-card {
-  background-color: #1345ce !important;
+  /* background-color: #1345ce !important; */
+}
+
+/* ANT DESIGN OVERRIDES */
+
+.ant-layout-header {
+  padding: 0;
+  background: none;
 }
