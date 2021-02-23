@@ -107,3 +107,8 @@ h1 {
   padding: 0;
   background: none;
 }
+
+.ant-layout-footer {
+  padding: 0;
+  background: none;
+}

@@ -7,13 +7,17 @@ import { GiftForm } from "./app/components/form/index"
 import { RedeemPage } from "./app/components/redeem"
 import { RedeemResult } from "./app/components/redeemResult/index."
 import { MittoHeader } from "./app/components/layout/header/index"
-
+import { MittoFooter } from "./app/components/layout/footer"
+import { Layout } from 'antd'
+const { Content } = Layout
 const App = () =>  {
   const connectToHandcash = () => window.location.href = "https://app.handcash.io/#/authorizeApp?appId=5fff949f4033300c3d87aed1"
   
   return (
     <Router>
+      <Layout>
       <MittoHeader/>
+      <Content>
       <Switch>
         {/*TODO: make login the default path*/}
         <Route path="/login">
@@ -41,8 +45,10 @@ const App = () =>  {
         <Route path="/redeem/gift">
         <RedeemResult />
         </Route>
-        
       </Switch>
+      </Content>
+      <MittoFooter />
+      </Layout>
     </Router>
     
   );
