@@ -1,6 +1,6 @@
 import "antd/dist/antd.css"
 import "./index.css"
-import { Row, Col, Image } from 'antd'
+import { Row, Col } from 'antd'
 import { CardContainer } from './app/components/card'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { GiftForm } from "./app/components/form/index"
@@ -9,9 +9,9 @@ import { RedeemResult } from "./app/components/redeemResult/index."
 import { MittoHeader } from "./app/components/layout/header/index"
 import { MittoFooter } from "./app/components/layout/footer"
 import { Layout } from 'antd'
+import { LoginCard } from "./app/components/login"
 const { Content } = Layout
 const App = () =>  {
-  const connectToHandcash = () => window.location.href = "https://app.handcash.io/#/authorizeApp?appId=5fff949f4033300c3d87aed1"
   
   return (
     <Router>
@@ -24,8 +24,7 @@ const App = () =>  {
         <Row className={"container"}>
         <CardContainer>
         <Col span={36}>
-        <Image src={'https://bitcoin-sv-gifter.s3.amazonaws.com/mitto-logo-resizedv1.png'} className={'logo-image'} width={100}></Image>
-         <div onClick={connectToHandcash} id="connectButton" app-id="123-456">Connect with HandCash</div>
+        <LoginCard/>
         </Col>
         </CardContainer>
         </Row>
