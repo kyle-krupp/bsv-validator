@@ -23,9 +23,12 @@ code {
 	text-align: center;
 }
 
-.button {
+.send-button {
 	background-color: #4caf50;
 	border-color: #4caf50;
+	border-radius: 50px;
+	height: 45px;
+	width: 120px;
 }
 
 /* REPONSIVE DESIGN */
@@ -104,11 +107,33 @@ h3 {
 	margin: 10px;
 }
 
-#user-info-card {
-	/* background-color: #1345ce !important; */
+.form-icon {
+	margin-right: 2rem;
+	width: 2rem;
+}
+
+.button-icon {
+	width: 1.5rem;
+	margin-right: 1rem;
+}
+
+.local-currency {
+	border: solid 1px #21ca8a;
+	border-radius: 7rem;
+	height: 4vh;
+	width: 5rem;
+	text-align: center;
+	margin: auto;
+	padding: 10px;
+	color: white;
+	background-color: #21ca8a;
 }
 
 /* ANT DESIGN OVERRIDES */
+
+.ant-layout {
+	background: white;
+}
 
 .ant-layout-header {
 	padding: 0;
@@ -122,6 +147,24 @@ h3 {
 
 .ant-card {
 	background: none;
+	width: 35rem;
 }
 
-/* MEDIA QUERIES */
+.ant-btn {
+	background-color: #21ca8a;
+	border-color: #21ca8a;
+	margin-top: 5vh;
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+	color: #fff;
+	background: #21ca8a;
+	border-color: #21ca8a;
+}
+
+.ant-input {
+	border-radius: 7px;
+	height: 5vh;
+	width: 75%;
+}

@@ -14,44 +14,36 @@ const { Content } = Layout
 const App = () =>  {
   
   return (
-    <Router>
-      <Layout>
-      <MittoHeader/>
-      <Content>
-      <Switch>
+<Router>
+  <Layout>
+  <MittoHeader/>
+  <Content>
+    <Switch>
         {/*TODO: make login the default path*/}
-        <Route path="/login">
-        <Row className={"container"}>
-        <CardContainer>
-        <Col span={36}>
-        <LoginCard/>
-        </Col>
-        </CardContainer>
-        </Row>
-        </Route>
-        <Route path="/send">
-        <Row className={"container"}>
-        <CardContainer>
-        <Col span={36}>
-        <GiftForm/>
-        </Col>
-        </CardContainer>
-        </Row>
-        </Route> 
-        <Route exact path="/redeem">
+      <Route path="/login">
+          <Row className={"container"}>
+          <CardContainer>
+           <Col span={36}>
+              <LoginCard/>
+            </Col>
+          </CardContainer>
+          </Row>
+      </Route>
+      <Route path="/send">
+          <GiftForm/>
+      </Route> 
+      <Route exact path="/redeem">
           <RedeemPage />
-        </Route>
-        <Route path="/redeem/gift">
-        <RedeemResult />
-        </Route>
-      </Switch>
-      </Content>
-      <MittoFooter />
-      </Layout>
-    </Router>
-    
+      </Route>
+      <Route path="/redeem/gift">
+          <RedeemResult />
+      </Route>
+    </Switch>
+  </Content>
+  <MittoFooter />
+  </Layout>
+</Router>
   );
-
 }
 
 export default App
