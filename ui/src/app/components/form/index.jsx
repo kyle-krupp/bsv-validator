@@ -17,6 +17,7 @@ export const GiftForm = () => {
   const params = new URLSearchParams(window.location.search);
   const authToken = params.get('authToken').split("&").toString()
   localStorage.setItem('authToken', authToken)
+  const userName = userInfo?.name?.replace(/\s+/g, '')
 
   const isRecipent = localStorage.getItem('redemptionToken') ? true : false
   
@@ -66,22 +67,19 @@ export const GiftForm = () => {
   return (
     <>
   <Row>
-    <Col span={6} offset={18}>
-      <Row>
-        <Col span={4}>
+    <Col xs={{span: 8, offset: 12}} lg={{span: 6, offset: 16}}>
+      <Row className="info-row" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+        <Col xs={{span: 10}} lg={{span:4}}>
           <Tooltip placement='bottom' title='This is your local currency. You can update your currency by changing the wallet settings in the HandCash app.'>
             <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/info-icon.png" alt="info"/>
           </Tooltip>
         </Col>
-        <Col span={4}>
-          <div className='local-currency'>
-            <p>
+        <Col xs={{span: 10}} lg={{span:4}}>
+            <button className="ant-btn ant-btn-primary local-currency">
             {getSymbolFromCurrency(userInfo.currency)}{userInfo.currency}
-            </p>
-          </div>
+            </button>
         </Col>
       </Row>
-     
     </Col>
   </Row>
 
@@ -107,7 +105,7 @@ export const GiftForm = () => {
 <Row className="container">
 <CardContainer>
 <Avatar src={userInfo.profilePictureUrl} size={{ xs: 80, sm: 80, md: 80, lg: 80, xl: 80, xxl: 80 }}></Avatar>
-<h3>{userInfo.name}</h3>
+<h3 id="userName">${userName}</h3>
 
   <Form
   layout={'vertical'}

@@ -29,6 +29,23 @@ code {
 	border-radius: 50px;
 	height: 45px;
 	width: 120px;
+	margin-top: 5vh;
+}
+
+.info-row {
+	align-items: center;
+}
+
+#userName {
+	color: black;
+}
+
+.local-currency {
+	background-color: #4caf50;
+	border-color: #4caf50;
+	border-radius: 50px;
+	height: 45px;
+	width: 120px;
 }
 
 /* REPONSIVE DESIGN */
@@ -117,18 +134,6 @@ h3 {
 	margin-right: 1rem;
 }
 
-.local-currency {
-	border: solid 1px #21ca8a;
-	border-radius: 7rem;
-	height: 4vh;
-	width: 5rem;
-	text-align: center;
-	margin: auto;
-	padding: 10px;
-	color: white;
-	background-color: #21ca8a;
-}
-
 /* ANT DESIGN OVERRIDES */
 
 .ant-layout {
@@ -153,7 +158,6 @@ h3 {
 .ant-btn {
 	background-color: #21ca8a;
 	border-color: #21ca8a;
-	margin-top: 5vh;
 }
 
 .ant-btn-primary:hover,
