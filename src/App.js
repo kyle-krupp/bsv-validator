@@ -19,8 +19,7 @@ const App = () =>  {
   <MittoHeader/>
   <Content>
     <Switch>
-        {/*TODO: make login the default path*/}
-      <Route path="/login">
+      <Route path="/" exact>
           <Row className={"container"}>
           <CardContainer>
            <Col span={36}>
