@@ -83,7 +83,11 @@ export const GiftForm = () => {
     </Col>
   </Row>
 
-  {isSubmitted ?  <Result
+  {isSubmitted ?  
+  
+  <Row className="container">
+  <CardContainer>
+  <Result
     status="success"
     title="Successfully Generated Gift URL with HandCash!"
     subTitle="Share your secret URL"
@@ -99,7 +103,10 @@ export const GiftForm = () => {
       </Button>
       </>,
     ]}
-  />:
+  />
+  </CardContainer>
+  </Row>
+  :
   loading ? "loading.." :
 <>
 <Row className="container">
