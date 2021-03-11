@@ -1,13 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import { Form, Input, Button, Result, Avatar, Row, Col, Tooltip } from 'antd';
-import { CopyOutlined } from '@ant-design/icons'
+import {useState, useEffect} from 'react';
+import { Form, Input, Button, Avatar, Row, Col, Tooltip } from 'antd';
 import { CardContainer } from '../card';
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import getSymbolFromCurrency from 'currency-symbol-map'
+import { SendResult } from './sendResult';
 
 export const GiftForm = () => {
   let history = useHistory()
-  const baseUrl = window.location.href.includes("localhost") ? "localhost:3000" : "https://angry-perlman-edcb4a.netlify.app"
+  const baseUrl = window.location.href.includes("localhost") ? "localhost:3000" : "https://mitto.cash"
   const [form] = Form.useForm()
   const [isSubmitted, setSubmitResult] = useState(false)
   const [userInfo, setUserInfo] = useState({})
@@ -61,8 +61,11 @@ export const GiftForm = () => {
   const onFinish = (values) => {
     sendGift(values.email, values.amount, values.note)
     setSubmitResult(true)
-
   };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo)
+  }
 
   return (
     <>
@@ -83,30 +86,7 @@ export const GiftForm = () => {
     </Col>
   </Row>
 
-  {isSubmitted ?  
-  
-  <Row className="container">
-  <CardContainer>
-  <Result
-    status="success"
-    title="Successfully Generated Gift URL with HandCash!"
-    subTitle="Share your secret URL"
-    extra={[
-    <>  
-    <Link to={{
-      pathname: '/redeem',
-      search: `?redemptionToken=${redemptionToken}`
-    }}>{redemptionUrl}</Link>
-    <div>&nbsp;</div>
-   <Button className={"button"} type="primary" key="console" icon={<CopyOutlined />} onClick={() => navigator.clipboard.writeText(redemptionUrl)}>
-        Copy to clipboard
-      </Button>
-      </>,
-    ]}
-  />
-  </CardContainer>
-  </Row>
-  :
+  {isSubmitted ?  <SendResult redemptionToken={redemptionToken} redemptionUrl={redemptionUrl}/> :
   loading ? "loading.." :
 <>
 <Row className="container">
@@ -114,28 +94,38 @@ export const GiftForm = () => {
 <Avatar src={userInfo.profilePictureUrl} size={{ xs: 80, sm: 80, md: 80, lg: 80, xl: 80, xxl: 80 }}></Avatar>
 <h3 id="userName">${userName}</h3>
 
-  <Form
+<Form
   layout={'vertical'}
   form={form}
   onFinish={onFinish}
+  onFinishFailed={onFinishFailed}
 >
-  <Form.Item name="email">
+<Form.Item>
   <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/recipient-icon.png" alt="recipient" className='form-icon'/>
+  <Form.Item name="email">
     <Input placeholder="Enter recipient's email address" />
-  </Form.Item>
-  <Form.Item name='amount'>
+    </Form.Item>
+</Form.Item>
+
+<Form.Item>
     <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/amount-icon.png" alt="amount" className='form-icon'/>
-  <Input placeholder='Enter amount' />
-  </Form.Item>
-  <Form.Item name='note'>
-  <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/description-icon.png" alt="description" className='form-icon'/>
-    <Input placeholder='Add a description' />
-  </Form.Item>
-  <Form.Item>
-    <Button className={"send-button"}type="primary" htmlType="submit">
-      <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/send-icon.png" alt="send" className='button-icon'/>
-      Send</Button>
-  </Form.Item>
+    <Form.Item name='amount'>
+      <Input placeholder='Enter amount' />
+    </Form.Item>
+</Form.Item>
+
+<Form.Item>
+    <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/description-icon.png" alt="description" className='form-icon'/>
+    <Form.Item name='note'>
+      <Input placeholder='Add a description' />
+    </Form.Item>
+</Form.Item>
+
+<Form.Item>
+  <Button className={"send-button"} type="primary" htmlType="submit">
+    <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/send-icon.png" alt="send" className='button-icon'/>
+    Send</Button>
+</Form.Item>
 </Form>
 </CardContainer>
 </Row>
