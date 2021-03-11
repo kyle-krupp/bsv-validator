@@ -3,7 +3,7 @@ import { Form, Input, Button, Avatar, Row, Col, Tooltip } from 'antd';
 import { CardContainer } from '../card';
 import { useHistory } from 'react-router-dom'
 import getSymbolFromCurrency from 'currency-symbol-map'
-import { SendResult } from './sendResult/index';
+import { SendResult } from './sendResult/index.jsx';
 
 export const GiftForm = () => {
   let history = useHistory()
