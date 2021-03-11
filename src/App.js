@@ -3,7 +3,7 @@ import "./index.css"
 import { Row, Col } from 'antd'
 import { CardContainer } from './app/components/card'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import { GiftForm } from "./app/components/form/index"
+import { SendPage } from "./app/components/form/index"
 import { RedeemPage } from "./app/components/redeem"
 import { RedeemResult } from "./app/components/redeemResult/index."
 import { MittoHeader } from "./app/components/layout/header/index"
@@ -29,7 +29,7 @@ const App = () =>  {
           </Row>
       </Route>
       <Route path="/send">
-          <GiftForm/>
+          <SendPage/>
       </Route> 
       <Route exact path="/redeem">
           <RedeemPage />

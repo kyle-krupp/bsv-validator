@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom'
 import getSymbolFromCurrency from 'currency-symbol-map'
 import { SendResult } from './sendResult'
 
-export const GiftForm = () => {
+export const SendPage = () => {
   let history = useHistory()
   const baseUrl = window.location.href.includes("localhost") ? "localhost:3000" : "https://mitto.cash"
   const [form] = Form.useForm()
