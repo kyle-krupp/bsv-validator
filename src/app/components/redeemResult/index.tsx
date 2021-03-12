@@ -23,9 +23,9 @@ export const RedeemResult = () => {
     const response = await fetch('https://api.mitto.cash/gift/redeem', requestOptions)
     setStatus(response.status)
   }
+  redeemGift()
 
   useEffect(() => {
-   redeemGift()
    localStorage.clear()
      // eslint-disable-next-line
   }, [])
