@@ -14,21 +14,21 @@ export const RedeemResult = () => {
   console.log(redemptionToken)
   const { innerWidth, innerHeight } = useWindowSize()
 
-  const redeemGift = async () => {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          "receiverHandCashAuthToken": authToken,
-          "redemptionToken": redemptionToken
-        })
-    }
-    const response = await fetch('https://api.mitto.cash/gift/redeem', requestOptions)
-    setStatus(response.status)
-    console.log(status)
-  }
 
   useEffect(() => {
+    const redeemGift = async () => {
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            "receiverHandCashAuthToken": authToken,
+            "redemptionToken": redemptionToken
+          })
+      }
+      const response = await fetch('https://api.mitto.cash/gift/redeem', requestOptions)
+      setStatus(response.status)
+      console.log(status)
+    }
    redeemGift()
    localStorage.clear()
      // eslint-disable-next-line
