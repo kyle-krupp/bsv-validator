@@ -10,25 +10,21 @@ export const RedeemResult = () => {
   const [status, setStatus] = useState(200)
   const authToken = localStorage.getItem('authToken')
   const redemptionToken = localStorage.getItem('redemptionToken')
-  console.log(authToken)
-  console.log(redemptionToken)
   const { innerWidth, innerHeight } = useWindowSize()
-
+  const redeemGift = async () => {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          "receiverHandCashAuthToken": authToken,
+          "redemptionToken": redemptionToken
+        })
+    }
+    const response = await fetch('https://api.mitto.cash/gift/redeem', requestOptions)
+    setStatus(response.status)
+  }
 
   useEffect(() => {
-    const redeemGift = async () => {
-      const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ 
-            "receiverHandCashAuthToken": authToken,
-            "redemptionToken": redemptionToken
-          })
-      }
-      const response = await fetch('https://api.mitto.cash/gift/redeem', requestOptions)
-      setStatus(response.status)
-      console.log(status)
-    }
    redeemGift()
    localStorage.clear()
      // eslint-disable-next-line
@@ -36,7 +32,7 @@ export const RedeemResult = () => {
   return (
     <>
     
-    { status == 200 ? 
+    { status === 200 ? 
     <>
     <Confetti
     width={innerWidth}
@@ -58,7 +54,10 @@ export const RedeemResult = () => {
     </Col>
   </Row>
 </>
-: history.push('/error')
+: history.push('/error', {
+  authToken: authToken,
+  redemptionToken: redemptionToken
+})
 }
   </>
   )
