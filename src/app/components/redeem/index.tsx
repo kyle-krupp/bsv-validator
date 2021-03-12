@@ -13,7 +13,7 @@ export const RedeemPage = () => {
       <img src="https://mitto-bsv-gifter.s3.amazonaws.com/icons/recipient-icon.png" alt="receive" style={{marginBottom: "30px"}}/>
     </Row>
     <Row justify="center">
-    <h1 style={{color: "#21CA8A", textAlign: "center"}}>You've received Bitcoin!</h1>
+    <h1 style={{color: "#21CA8A", textAlign: "center"}}>You've received money!</h1>
     <p style={{color: "#5A728A", fontSize: "20px", textAlign: "center", fontWeight: "lighter"}}>Someone has sent you a BSV gift, login with HandCash to redeem.</p>
     </Row>
     <Row justify="center">

@@ -10,7 +10,7 @@ import { MittoHeader } from "./app/components/layout/header/index"
 import { MittoFooter } from "./app/components/layout/footer"
 import { MittoSuccessHeader } from "./app/components/layout/successHeader"
 import { MittoSuccessFooter } from "./app/components/layout/successFooter"
-
+import { ErrorPage } from "./app/components/error"
 import { Layout } from 'antd'
 import { LoginCard } from "./app/components/login"
 const { Content } = Layout
@@ -40,14 +40,14 @@ const App = () =>  {
         </Content>
       <MittoFooter />
   </Route> 
-      <Route exact path="/redeem">
+  <Route exact path="/redeem">
       <MittoSuccessHeader/>
         <Content>
           <RedeemPage />
         </Content>
       <MittoSuccessFooter />
-      </Route>
-      <Route path="/redeem/gift">
+  </Route>
+  <Route path="/redeem/gift">
       <MittoSuccessHeader/>
       <style>{'body { background-color: #21CA8A; }'}
           </style>
@@ -55,7 +55,10 @@ const App = () =>  {
           <RedeemResult />
         </Content>
       <MittoSuccessFooter />
-      </Route>
+  </Route>
+  <Route path="/error">
+    <ErrorPage />
+  </Route>
     </Switch>
   </Layout>
 </Router>
