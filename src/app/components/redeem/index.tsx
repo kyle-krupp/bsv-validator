@@ -14,10 +14,10 @@ export const RedeemPage = () => {
     </Row>
     <Row justify="center">
     <h1 style={{color: "white", textAlign: "center"}}>You've received money!</h1>
-    <p style={{color: "white", fontSize: "20px", textAlign: "center", fontWeight: "lighter"}}>Redeem your gift:</p>
+    <p style={{color: "white", fontSize: "20px", textAlign: "center", fontWeight: "lighter"}}>Someone has sent you a BSV gift, login with HandCash to redeem.</p>
     </Row>
     <Row justify="center">
-    <div onClick={connectWithHandCash} id="connectButtonReceive" app-id="123-456">Connect HandCash</div>
+    <div onClick={connectWithHandCash} id="connectButtonReceive" app-id="123-456">Redeem your gift</div>
     </Row>
   </Col>
 </Row>
