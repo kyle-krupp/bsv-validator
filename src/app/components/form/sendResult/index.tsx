@@ -19,6 +19,6 @@ export const SendResult = (props) => {
       </Button>
     </Row>
   </Col>
-  </Row>
+</Row>
   )
 }

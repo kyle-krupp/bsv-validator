@@ -53,7 +53,7 @@ code {
 h1 {
 	font-weight: 600;
 	font-size: 2.5rem;
-	line-height: 32px;
+	line-height: 45px;
 	color: black;
 	text-align: center;
 }
@@ -120,6 +120,55 @@ h3 {
 	box-shadow: 0px 0px 0px hsla(0, 0%, 0%, 0.15);
 }
 
+#connectButtonReceive {
+	-webkit-user-select: none; /* Safari */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+/Edge */
+	user-select: none; /* Standard */
+	font-family: 'Montserrat', sans-serif;
+	background: transparent;
+	border-radius: 60px;
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+	color: #ffffff;
+	font-size: 20px;
+	font-weight: bolder;
+	padding: 16px 24px;
+	text-decoration: none;
+	transition: 0.3s;
+	width: 100%;
+	max-width: 320px;
+	vertical-align: middle;
+	letter-spacing: 0.5px;
+	margin-top: 40px;
+	border: 4px solid white;
+}
+#connectButtonReceive:before {
+	background: url(https://handcash.io/resources/handcash_white_icon.svg)
+		no-repeat scroll center center / 100% auto rgba(0, 0, 0, 0);
+	content: '';
+	display: inline-block;
+	color: #fff;
+	height: 30px;
+	margin-right: 12px;
+	margin-bottom: 1px;
+	position: relative;
+	vertical-align: middle;
+	width: 30px;
+}
+#connectButtonReceive:hover {
+	background-image: linear-gradient(#31c475, #16b15d);
+	top: 1px;
+	box-shadow: 0px 3px 6px hsla(0, 0%, 0%, 0.15);
+}
+#connectButtonReceive:active {
+	background-image: linear-gradient(#38cb7c, #1cb462);
+	position: relative;
+	top: 1px;
+	box-shadow: 0px 0px 0px hsla(0, 0%, 0%, 0.15);
+}
+
 .logo-image {
 	margin: 10px;
 }
@@ -143,11 +192,15 @@ h3 {
 	border-radius: 9px;
 }
 
+.receive-gift-section {
+	margin: 17rem;
+}
+
 
 /* ANT DESIGN OVERRIDES */
 
 .ant-layout {
-	background: white;
+	background: none;
 }
 
 .ant-layout-header {
@@ -185,6 +238,13 @@ h3 {
 
 @media screen and (max-width: 768px) {
 	.send-gift-section {
+		margin-left: 0;
+		margin-right: 0;
+		margin-top: 10vh;
+		margin-bottom: 0;
+	}
+
+	.receive-gift-section {
 		margin-left: 0;
 		margin-right: 0;
 		margin-top: 10vh;
