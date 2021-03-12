@@ -5,7 +5,7 @@ import { CardContainer } from './app/components/card'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import { SendPage } from "./app/components/form/index"
 import { RedeemPage } from "./app/components/redeem/index"
-import { RedeemResult } from "./app/components/redeemResult/index."
+import { RedeemResult } from "./app/components/redeemResult/index"
 import { MittoHeader } from "./app/components/layout/header/index"
 import { MittoFooter } from "./app/components/layout/footer"
 import { MittoSuccessHeader } from "./app/components/layout/successHeader"
@@ -43,18 +43,18 @@ const App = () =>  {
       <Route exact path="/redeem">
       <MittoSuccessHeader/>
         <Content>
-          <style>{'body { background-color: #21CA8A; }'}
-          </style>
           <RedeemPage />
-          </Content>
+        </Content>
       <MittoSuccessFooter />
       </Route>
       <Route path="/redeem/gift">
-      <MittoHeader/>
+      <MittoSuccessHeader/>
+      <style>{'body { background-color: #21CA8A; }'}
+          </style>
         <Content>
           <RedeemResult />
-          </Content>
-      <MittoFooter />
+        </Content>
+      <MittoSuccessFooter />
       </Route>
     </Switch>
   </Layout>
