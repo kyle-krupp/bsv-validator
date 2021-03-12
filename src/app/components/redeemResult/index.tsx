@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react'
 import { Row, Col } from 'antd'
 import useWindowSize from "@rooks/use-window-size"
 import Confetti from 'react-confetti'
+import { useHistory } from 'react-router-dom'
+
 
 export const RedeemResult = () => {
+  let history = useHistory()
   const [status, setStatus] = useState(200)
   const authToken = localStorage.getItem('authToken')
   const redemptionToken = localStorage.getItem('redemptionToken')
@@ -33,8 +36,8 @@ export const RedeemResult = () => {
   return (
     <>
     
-    {
-<>
+    { status == 200 ? 
+    <>
     <Confetti
     width={innerWidth}
     height={innerHeight}
@@ -55,6 +58,7 @@ export const RedeemResult = () => {
     </Col>
   </Row>
 </>
+: history.push('/error')
 }
   </>
   )
