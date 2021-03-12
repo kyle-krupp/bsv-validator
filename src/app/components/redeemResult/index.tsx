@@ -4,7 +4,7 @@ import useWindowSize from "@rooks/use-window-size"
 import Confetti from 'react-confetti'
 
 export const RedeemResult = () => {
-  // const [status, setStatus] = useState(200)
+  const [status, setStatus] = useState(200)
   const authToken = localStorage.getItem('authToken')
   const redemptionToken = localStorage.getItem('redemptionToken')
   console.log(authToken)
@@ -21,7 +21,8 @@ export const RedeemResult = () => {
         })
     }
     const response = await fetch('https://api.mitto.cash/gift/redeem', requestOptions)
-    // setStatus(response.status)
+    setStatus(response.status)
+    console.log(status)
   }
 
   useEffect(() => {
