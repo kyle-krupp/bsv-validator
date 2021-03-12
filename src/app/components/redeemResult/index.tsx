@@ -4,9 +4,11 @@ import useWindowSize from "@rooks/use-window-size"
 import Confetti from 'react-confetti'
 
 export const RedeemResult = () => {
-  const [status, setStatus] = useState(200)
+  // const [status, setStatus] = useState(200)
   const authToken = localStorage.getItem('authToken')
   const redemptionToken = localStorage.getItem('redemptionToken')
+  console.log(authToken)
+  console.log(redemptionToken)
   const { innerWidth, innerHeight } = useWindowSize()
 
   const redeemGift = async () => {
@@ -19,7 +21,7 @@ export const RedeemResult = () => {
         })
     }
     const response = await fetch('https://api.mitto.cash/gift/redeem', requestOptions)
-    setStatus(response.status)
+    // setStatus(response.status)
   }
 
   useEffect(() => {
@@ -30,7 +32,7 @@ export const RedeemResult = () => {
   return (
     <>
     
-    {status === 200 ? 
+    {
 <>
     <Confetti
     width={innerWidth}
@@ -52,7 +54,7 @@ export const RedeemResult = () => {
     </Col>
   </Row>
 </>
-   : <div>Error</div>}
+}
   </>
   )
   
