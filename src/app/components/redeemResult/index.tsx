@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Row, Col } from 'antd'
 import useWindowSize from "@rooks/use-window-size"
 import Confetti from 'react-confetti'
@@ -25,13 +25,10 @@ export const RedeemResult = () => {
   }
   redeemGift()
 
-  useEffect(() => {
-   localStorage.clear()
-     // eslint-disable-next-line
-  }, [])
+  localStorage.clear()
+
   return (
     <>
-    
     { status === 200 ? 
     <>
     <Confetti
