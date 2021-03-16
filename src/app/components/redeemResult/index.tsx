@@ -11,11 +11,12 @@ export const RedeemResult = () => {
   // let history = useHistory()
   const [status, setStatus] = useState(null)
   const [isLoading, setLoading] = useState(true)
+  const { innerWidth, innerHeight } = useWindowSize()
+  const redeemGift = async () => {
   const authToken = localStorage.getItem('authToken')
   const redemptionToken = localStorage.getItem('redemptionToken')
   console.log(`authToken: ${authToken}`)
-  const { innerWidth, innerHeight } = useWindowSize()
-  const redeemGift = async () => {
+  console.log(`redemptionToken: ${redemptionToken}`)
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
