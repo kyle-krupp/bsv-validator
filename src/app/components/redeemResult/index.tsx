@@ -1,15 +1,19 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Row, Col } from 'antd'
 import useWindowSize from "@rooks/use-window-size"
 import Confetti from 'react-confetti'
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
+import { ErrorPage } from '../error'
+import { Loading } from '../loading'
 
 
 export const RedeemResult = () => {
-  let history = useHistory()
-  const [status, setStatus] = useState(200)
+  // let history = useHistory()
+  const [status, setStatus] = useState(null)
+  const [isLoading, setLoading] = useState(true)
   const authToken = localStorage.getItem('authToken')
   const redemptionToken = localStorage.getItem('redemptionToken')
+  console.log(`authToken: ${authToken}`)
   const { innerWidth, innerHeight } = useWindowSize()
   const redeemGift = async () => {
     const requestOptions = {
@@ -21,15 +25,21 @@ export const RedeemResult = () => {
         })
     }
     const response = await fetch('https://api.mitto.cash/gift/redeem', requestOptions)
+    console.log(response)
     setStatus(response.status)
+    setLoading(false)
   }
-  redeemGift()
 
-  localStorage.clear()
+  useEffect(() => {
+    redeemGift()
+    localStorage.clear()
+    // eslint-disable-next-line
+  }, [])
+
 
   return (
     <>
-    { status === 200 ? 
+    { isLoading ?  <Loading />: status === 200 ? 
     <>
     <Confetti
     width={innerWidth}
@@ -51,10 +61,10 @@ export const RedeemResult = () => {
     </Col>
   </Row>
 </>
-: history.push('/error', {
-  authToken: authToken,
-  redemptionToken: redemptionToken
-})
+: 
+<>
+<ErrorPage />
+</>
 }
   </>
   )

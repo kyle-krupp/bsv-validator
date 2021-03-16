@@ -1,4 +1,5 @@
 import { Row, Col, Button } from "antd";
+import { Fragment } from "react";
 import { useHistory } from 'react-router-dom'
 
 
@@ -10,6 +11,8 @@ export const ErrorPage = () => {
   }
 
   return (
+<Fragment>
+<style>{'body { background-color: white; }'}</style>
 <Row justify="center" align="middle" className="receive-gift-section">
   <Col xs={{span: 18}} lg={{span:12}} >
     <Row justify="center">
@@ -24,8 +27,9 @@ export const ErrorPage = () => {
         Go Back
       </Button>
     </Row>
-    
   </Col>
 </Row>
+</Fragment>
+
   )
 }
