@@ -19,7 +19,7 @@ export const SendPage = () => {
   localStorage.setItem('authToken', authToken)
   const userName = userInfo?.name?.replace(/\s+/g, '')
 
-  const isRecipent = localStorage.getItem('redemptionToken') ?? params.get('redeemToken') ? true : false
+  const isRecipent = localStorage.getItem('redemptionToken') ?? params.get('token') ? true : false
   
   const checkRecipientRedirect = () => isRecipent ? history.push(`redeem/gift?authToken=${authToken}`) : null
   
