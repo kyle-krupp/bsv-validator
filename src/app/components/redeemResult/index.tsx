@@ -12,12 +12,12 @@ export const RedeemResult = () => {
   const [status, setStatus] = useState(null)
   const [isLoading, setLoading] = useState(true)
   const { innerWidth, innerHeight } = useWindowSize()
+  const params = new URLSearchParams(window.location.search);
   const redeemGift = async () => {
   const authToken = localStorage.getItem('authToken')
-  const redemptionToken = localStorage.getItem('redemptionToken')
-  console.log(`authToken: ${authToken}`)
-  console.log(`redemptionToken: ${redemptionToken}`)
-    const requestOptions = {
+  const redemptionToken = localStorage.getItem('redemptionToken') ?? params.get('redeemToken') 
+
+  const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 

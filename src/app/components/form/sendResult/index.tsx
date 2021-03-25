@@ -1,7 +1,10 @@
-import { Button, Row, Col } from 'antd';
+import { Button, Row, Col, message } from 'antd';
 import { CopyOutlined } from '@ant-design/icons'
 
 export const SendResult = (props) => {
+  const success = () => {
+    message.success('Gift link succesfully copied to clipboard');
+  };
   return (
 <Row justify="center" align="middle" className="send-gift-section">
   <Col xs={{span: 18}} lg={{span:12}} >
@@ -14,7 +17,7 @@ export const SendResult = (props) => {
     <p style={{color: "#5A728A", fontSize: "15px", textAlign: "center"}}>Alternatively share this url with the recipient:</p>
     </Row>
     <Row justify="center">
-        <Button className={"button send-gift-copy"} style={{backgroundColor: "white", color: "#A6B0C3", borderColor: "#A6B0C3"}} type="primary" key="console" icon={<CopyOutlined />} onClick={() => navigator.clipboard.writeText(props.redemptionUrl)}>
+        <Button className={"button send-gift-copy"} style={{backgroundColor: "white", color: "#A6B0C3", borderColor: "#A6B0C3"}} type="primary" key="console" icon={<CopyOutlined />} onClick={() => navigator.clipboard.writeText(props.redemptionUrl).then(success)}>
         Copy Secret URL
       </Button>
     </Row>
