@@ -67,6 +67,11 @@ export const SendPage = () => {
     console.log('Failed:', errorInfo)
   }
 
+  const validateMessages = {
+    // eslint-disable-next-line
+    required: "'${name}' is required!"
+  };
+
   return (
     <>
   <Row>
@@ -99,25 +104,19 @@ export const SendPage = () => {
   form={form}
   onFinish={onFinish}
   onFinishFailed={onFinishFailed}
+  validateMessages={validateMessages}
 >
 <Form.Item>
   <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/recipient-icon.png" alt="recipient" className='form-icon'/>
   <Form.Item name="email">
-    <Input placeholder="Enter recipient's email address" />
+    <Input placeholder="Enter recipient's email address (optional)" />
     </Form.Item>
 </Form.Item>
 
-<Form.Item>
+<Form.Item required={true} requiredMark={true}>
     <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/amount-icon.png" alt="amount" className='form-icon'/>
     <Form.Item name='amount'>
-      <Input placeholder='Enter amount' />
-    </Form.Item>
-</Form.Item>
-
-<Form.Item>
-    <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/description-icon.png" alt="description" className='form-icon'/>
-    <Form.Item name='note'>
-      <Input placeholder='Add a description' />
+      <Input placeholder={`Enter amount in ${userInfo.currency}`} />
     </Form.Item>
 </Form.Item>
 

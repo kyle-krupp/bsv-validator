@@ -15,7 +15,7 @@ export const RedeemResult = () => {
   const params = new URLSearchParams(window.location.search);
   const redeemGift = async () => {
   const authToken = localStorage.getItem('authToken')
-  const redemptionToken = localStorage.getItem('redemptionToken') ?? params.get('redeemToken') 
+  const redemptionToken = localStorage.getItem('redemptionToken') ?? params.get('token') 
 
   const requestOptions = {
         method: 'POST',
