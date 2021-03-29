@@ -2,13 +2,11 @@ import { useState, useEffect } from 'react'
 import { Row, Col } from 'antd'
 import useWindowSize from "@rooks/use-window-size"
 import Confetti from 'react-confetti'
-// import { useHistory } from 'react-router-dom'
 import { ErrorPage } from '../error'
 import { Loading } from '../loading'
 
 
 export const RedeemResult = () => {
-  // let history = useHistory()
   const [status, setStatus] = useState(null)
   const [isLoading, setLoading] = useState(true)
   const { innerWidth, innerHeight } = useWindowSize()
@@ -26,7 +24,6 @@ export const RedeemResult = () => {
         })
     }
     const response = await fetch('https://api.mitto.cash/gift/redeem', requestOptions)
-    console.log(response)
     setStatus(response.status)
     setLoading(false)
   }

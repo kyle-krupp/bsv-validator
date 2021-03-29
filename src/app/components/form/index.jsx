@@ -22,10 +22,16 @@ export const SendPage = () => {
   const queryParamRedemptionToken = params.get('redeemToken')
   const userName = userInfo?.name?.replace(/\s+/g, '')
 
+  const isRecipent = localStorageRedemptionToken ? true : false
+
   const isRecipientFromEmail = queryParamRedemptionToken ? true : false
+  
+  const checkRecipientRedirect = () => isRecipent ? history.push(`redeem?authToken=${authToken}`) : null
 
   const checkRecipientFromEmail = () => isRecipientFromEmail ? history.push(`redeem/gift?redemptionToken=${queryParamRedemptionToken}`) : null
   
+  checkRecipientRedirect()
+
   checkRecipientFromEmail()
 
   const sendGift = async (email, amount, note) => {
