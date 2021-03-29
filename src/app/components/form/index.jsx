@@ -22,7 +22,7 @@ export const SendPage = () => {
   const queryParamRedemptionToken = params.get('redeemToken')
   const userName = userInfo?.name?.replace(/\s+/g, '')
 
-  const isRecipientFromEmail = queryParamRedemptionToken ? true : fals
+  const isRecipientFromEmail = queryParamRedemptionToken ? true : false
 
   const checkRecipientFromEmail = () => isRecipientFromEmail ? history.push(`redeem/gift?redemptionToken=${queryParamRedemptionToken}`) : null
   
