@@ -17,22 +17,13 @@ export const SendPage = () => {
   const [isPublicUrl, setPublicUrl] = useState(false)
   const params = new URLSearchParams(window.location.search);
   const authToken = params.get('authToken').split("&").toString()
-  localStorage.setItem('authToken', authToken)
-  const localStorageRedemptionToken = localStorage.getItem('redemptionToken')
-  const queryParamRedemptionToken = params.get('redeemToken')
+  const redemptionToken = params.get('redeemToken')
   const userName = userInfo?.name?.replace(/\s+/g, '')
 
-  const isRecipent = localStorageRedemptionToken ? true : false
+  const isRecipient = () => redemptionToken ? history.push(`/redeem/gift?redeemToken=${redemptionToken}`) : null
 
-  const isRecipientFromEmail = queryParamRedemptionToken ? true : false
-  
-  const checkRecipientRedirect = () => isRecipent ? history.push(`redeem?authToken=${authToken}`) : null
+  isRecipient()
 
-  const checkRecipientFromEmail = () => isRecipientFromEmail ? history.push(`redeem/gift?redemptionToken=${queryParamRedemptionToken}`) : null
-  
-  checkRecipientRedirect()
-
-  checkRecipientFromEmail()
 
   const sendGift = async (email, amount, note) => {
     email ? setPublicUrl(false) : setPublicUrl(true)

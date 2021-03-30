@@ -12,8 +12,8 @@ export const RedeemResult = () => {
   const { innerWidth, innerHeight } = useWindowSize()
   const params = new URLSearchParams(window.location.search);
   const redeemGift = async () => {
-  const authToken = localStorage.getItem('authToken')
-  const redemptionToken = localStorage.getItem('redemptionToken') ?? params.get('redeemToken') 
+  const authToken = params.get('authToken')
+  const redemptionToken = params.get('redeemToken') 
 
   const requestOptions = {
         method: 'POST',
