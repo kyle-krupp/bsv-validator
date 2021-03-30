@@ -2,9 +2,8 @@ import { Row, Col } from "antd";
 
 export const RedeemPage = () => {
   const params = new URLSearchParams(window.location.search);
-  const redemptionToken = params.get('redemptionToken')
-  localStorage.setItem('redemptionToken', redemptionToken)
-  const connectWithHandCash = () => window.location.href = 'https://app.handcash.io/#/authorizeApp?appId=5fff949f4033300c3d87aed1'
+  const redemptionToken = params.get('redeemToken')
+  const connectWithHandCash = () => window.location.href = `https://app.handcash.io/#/authorizeApp?appId=5fff949f4033300c3d87aed1&redeemToken=${redemptionToken}`
 
   return (
 <Row justify="center" align="middle" className="receive-gift-section">

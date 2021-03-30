@@ -15,13 +15,14 @@ export const SendPage = () => {
   const [redemptionUrl, setRedemptionUrl] = useState('')
   const [isPublicUrl, setPublicUrl] = useState(false)
   const params = new URLSearchParams(window.location.search);
-  const authToken = params.get('authToken').split("&").toString()
+  const authToken = params.get('authToken')
   const redeemToken = params.get('redeemToken')
+  console.log(`authToken: ${authToken}`)
+  console.log(`redeemToken: ${redeemToken}`)
+
   const userName = userInfo?.name?.replace(/\s+/g, '')
 
-  const isRecipient = () => redeemToken ? history.push(`/redeem/gift?redeemToken=${redeemToken}`) : null
-
-  isRecipient()
+  const isRecipient = () => redeemToken ? history.push(`/redeem/gift?authToken=${authToken}&redeemToken=${redeemToken}`) : null
 
 
   const sendGift = async (email, amount, note) => {
@@ -38,7 +39,7 @@ export const SendPage = () => {
   }
   const response = await fetch('https://api.mitto.cash/gift', requestOptions)
   const giftData = await response.json()
-  setRedemptionUrl(`${baseUrl}/redeem?redemptionToken=${giftData.redemptionToken}`)
+  setRedemptionUrl(`${baseUrl}/redeem?redeemToken=${giftData.redemptionToken}`)
   sessionStorage.setItem("redemptionToken", giftData.redemptionToken)
   }
 
@@ -55,6 +56,8 @@ export const SendPage = () => {
     setLoading(true)
     logUser()
     setLoading(false)
+    isRecipient()
+    // eslint-disable-next-line
 }, [authToken]);
 
   const onFinish = (values) => {
