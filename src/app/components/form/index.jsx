@@ -12,15 +12,14 @@ export const SendPage = () => {
   const [isSubmitted, setSubmitResult] = useState(false)
   const [userInfo, setUserInfo] = useState({})
   const [loading, setLoading] = useState(false);
-  const [redemptionToken, setRedemptionToken] = useState('')
   const [redemptionUrl, setRedemptionUrl] = useState('')
   const [isPublicUrl, setPublicUrl] = useState(false)
   const params = new URLSearchParams(window.location.search);
   const authToken = params.get('authToken').split("&").toString()
-  const redemptionToken = params.get('redeemToken')
+  const redeemToken = params.get('redeemToken')
   const userName = userInfo?.name?.replace(/\s+/g, '')
 
-  const isRecipient = () => redemptionToken ? history.push(`/redeem/gift?redeemToken=${redemptionToken}`) : null
+  const isRecipient = () => redeemToken ? history.push(`/redeem/gift?redeemToken=${redeemToken}`) : null
 
   isRecipient()
 
@@ -39,7 +38,6 @@ export const SendPage = () => {
   }
   const response = await fetch('https://api.mitto.cash/gift', requestOptions)
   const giftData = await response.json()
-  setRedemptionToken(giftData.redemptionToken)
   setRedemptionUrl(`${baseUrl}/redeem?redemptionToken=${giftData.redemptionToken}`)
   sessionStorage.setItem("redemptionToken", giftData.redemptionToken)
   }
@@ -92,7 +90,7 @@ export const SendPage = () => {
     </Col>
   </Row>
 
-  {isSubmitted ?  <SendResult redemptionToken={redemptionToken} redemptionUrl={redemptionUrl} isPublicURl={isPublicUrl}/> :
+  {isSubmitted ?  <SendResult redemptionToken={redeemToken} redemptionUrl={redemptionUrl} isPublicURl={isPublicUrl}/> :
   loading ? "loading.." :
 <>
 <Row className="container">
