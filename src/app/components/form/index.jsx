@@ -20,7 +20,7 @@ export const SendPage = () => {
   console.log(`authToken: ${authToken}`)
   console.log(`redeemToken: ${redeemToken}`)
 
-  const userName = userInfo?.name?.replace(/\s+/g, '')
+  const userName = userInfo?.name
 
   const isRecipient = () => redeemToken ? history.push(`/redeem/gift?authToken=${authToken}&redeemToken=${redeemToken}`) : null
 
@@ -99,7 +99,7 @@ export const SendPage = () => {
 <Row className="container">
 <CardContainer>
 <Avatar src={userInfo.profilePictureUrl} size={{ xs: 80, sm: 80, md: 80, lg: 80, xl: 80, xxl: 80 }}></Avatar>
-<h3 id="userName">${userName}</h3>
+<h3 id="userName">{userName}</h3>
 
 <Form
   layout={'vertical'}
