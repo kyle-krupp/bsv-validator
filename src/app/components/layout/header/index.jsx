@@ -16,10 +16,10 @@ export const MittoHeader = () => {
   //TODO: implement for portrait mode and retina?
   return <Header>
     {isDesktop && !isTablet && !isMobile &&
-    <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/Mitto+Header.png" alt="Mitto Header"/>}
+    <img src="https://mitto-bsv-gifter.s3.amazonaws.com/Mitto+Header.png" alt="Mitto Header"/>}
  
-    {isTablet && !isMobile && <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/Mitto+Header+TABLET.png" alt="Mitto Header"/>}
-    {isMobile && <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/Mitto+Header+MOBILE.png" alt="Mitto Header"/>}
+    {isTablet && !isMobile && <img src="https://mitto-bsv-gifter.s3.amazonaws.com/Mitto+Header+TABLET.png" alt="Mitto Header"/>}
+    {isMobile && <img src="https://mitto-bsv-gifter.s3.amazonaws.com/Mitto+Header+MOBILE.png" alt="Mitto Header"/>}
     
   </Header>
 }

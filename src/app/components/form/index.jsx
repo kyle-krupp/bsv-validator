@@ -81,7 +81,7 @@ export const SendPage = () => {
       <Row className="info-row" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
         <Col xs={{span: 10}} lg={{span:4}}>
           <Tooltip placement='bottom' title='This is your local currency. You can update your currency by changing the wallet settings in the HandCash app.'>
-            <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/info-icon.png" alt="info"/>
+            <img src="https://mitto-bsv-gifter.s3.amazonaws.com/icons/info-icon.png" alt="info"/>
           </Tooltip>
         </Col>
         <Col xs={{span: 10}} lg={{span:4}}>
@@ -109,14 +109,14 @@ export const SendPage = () => {
   validateMessages={validateMessages}
 >
 <Form.Item>
-  <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/recipient-icon.png" alt="recipient" className='form-icon'/>
+  <img src="https://mitto-bsv-gifter.s3.amazonaws.com/icons/recipient-icon.png" alt="recipient" className='form-icon'/>
   <Form.Item name="email">
     <Input placeholder="Enter recipient's email address (optional)" />
     </Form.Item>
 </Form.Item>
 
 <Form.Item required={true} requiredMark={true}>
-    <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/amount-icon.png" alt="amount" className='form-icon'/>
+    <img src="https://mitto-bsv-gifter.s3.amazonaws.com/icons/amount-icon.png" alt="amount" className='form-icon'/>
     <Form.Item name='amount'>
       <Input placeholder={`Enter amount in ${userInfo.currency}`} />
     </Form.Item>
@@ -124,7 +124,7 @@ export const SendPage = () => {
 
 <Form.Item>
   <Button className={"send-button"} type="primary" htmlType="submit">
-    <img src="https://bitcoin-sv-gifter.s3.amazonaws.com/send-icon.png" alt="send" className='button-icon'/>
+    <img src="https://mitto-bsv-gifter.s3.amazonaws.com/icons/send-icon.png" alt="send" className='button-icon'/>
     Send</Button>
 </Form.Item>
 </Form>
